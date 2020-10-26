@@ -19,50 +19,66 @@ Below illustrates a series of steps in performing merge sort.
 ## Merge Sort Implementation 
 
 ```swift 
-func mergesort(_ arr: [Int]) -> [Int] {
+// merge sort
+
+// 2 parts
+
+// divide and conquer
+// mergesort using recursion
+// 2 parts of a recursive function
+// 1. base case
+// 2. recursive call
+func mergesort(_ arr: [Int]) -> [Int] { // O(nlogn)
+  // 3 - base case
   guard arr.count > 1 else {
     return arr
   }
+  // 1 - middle index
   let middleIndex = arr.count / 2
-  let left = mergesort(Array(arr[..<middleIndex]))
-  let right = mergesort(Array(arr[middleIndex...]))
   
-  return merge(left: left, right: right)
+  // 2 - use divide and conquer to split array in halves => runtime O(log n)
+  let leftArr = mergesort(Array(arr[..<middleIndex])) // ..< middleIndex - does not include middleIndex
+  let rightArr = mergesort(Array(arr[middleIndex...]))
   
+  // 4 - merge elements while sorting
+  return merge(leftArr: leftArr, rightArr: rightArr)
 }
 
-func merge(left: [Int], right: [Int])  -> [Int] {
-  var result = [Int]()
-  
+// merge sorted arrays
+func merge(leftArr: [Int], rightArr: [Int]) -> [Int] { // O(n)
+  var results = [Int]()
   var leftIndex = 0
   var rightIndex = 0
   
-  while leftIndex < left.count &&  rightIndex < right.count {
-    let leftElement = left[leftIndex]
-    let rightElement = right[rightIndex]
+  // 4a
+  while leftIndex < leftArr.count && rightIndex < rightArr.count {
+    let leftElement = leftArr[leftIndex]
+    let rightElement = rightArr[rightIndex]
     
     if leftElement < rightElement {
-      result.append(leftElement)
+      results.append(leftElement)
       leftIndex += 1
     } else if rightElement < leftElement {
-      result.append(rightElement)
+      results.append(rightElement)
       rightIndex += 1
-    } else {
-      result.append(leftElement)
+    } else { // there're equal - add both elements to the results array
+      results.append(leftElement)
       leftIndex += 1
-      result.append(rightElement)
+      results.append(rightElement)
       rightIndex += 1
     }
   }
   
-  if leftIndex < left.count {
-    result.append(contentsOf: left[leftIndex...])
-  }
-  if rightIndex < right.count {
-    result.append(contentsOf: right[rightIndex...])
+  // 4b - add remaining elements if any
+  if leftIndex < leftArr.count { // values we have not seen
+    results.append(contentsOf: leftArr[leftIndex...])
   }
   
-  return result
+  if rightIndex < rightArr.count {
+    results.append(contentsOf: rightArr[rightIndex...])
+  }
+  
+  return results
 }
 
 mergesort([-3, 5, 0, 5, 8, 4, 1]) // [-3, 0, 1, 4, 5, 5, 8]
