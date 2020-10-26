@@ -4,6 +4,8 @@ Merge sort algorithm.
 
 The merge sort algorithm uses a divide and coquer approach to sort an array. 
 
+The runtime of merge sort is `O(n log n)` .
+
 Below illustrates a series of steps in performing merge sort. 
 
 1. Find the middle index of the array.
