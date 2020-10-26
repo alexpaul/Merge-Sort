@@ -6,12 +6,12 @@ The merge sort algorithm uses a divide and coquer approach to sort an array.
 
 Below illustrates a series of steps in performing merge sort. 
 
-![sketch of merge sort](https://user-images.githubusercontent.com/1819208/97167268-e5841200-175c-11eb-8e01-a8322e5ffbd6.jpg)
-
 1. Find the middle index of the array.
 2. Divide the array in a left and right side using the middle index. `O(log n)` runtime. 
 3. The base case for stopping the divide and conquer process is when we have 1 element left. 
 4. Merge back the divided arrays while sorting the elements. `O(n)` runtime. 
+
+![sketch of merge sort](https://user-images.githubusercontent.com/1819208/97167268-e5841200-175c-11eb-8e01-a8322e5ffbd6.jpg)
 
 
 ## Merge Sort Implementation 
