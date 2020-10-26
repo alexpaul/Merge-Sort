@@ -11,7 +11,7 @@ Below illustrates a series of steps in performing merge sort.
 3. The base case for stopping the divide and conquer process is when we have 1 element left. 
 4. Merge back the divided arrays while sorting the elements. `O(n)` runtime. 
 
-![sketch of merge sort](https://user-images.githubusercontent.com/1819208/97167268-e5841200-175c-11eb-8e01-a8322e5ffbd6.jpg)
+![sketch of merge sort](https://user-images.githubusercontent.com/1819208/97173227-98a53900-1766-11eb-9d01-cb9842ae88a6.jpg)
 
 
 ## Merge Sort Implementation 
